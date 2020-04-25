@@ -1,10 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[27]:
-
-
-import random
 from itertools import permutations 
 from math import sqrt
 
@@ -36,10 +32,10 @@ def oprNum(a,b,op):
 #prepare the inputs
 opList =['+','-','*','/']
 
-random.seed(5)
+
 curList=[]
 curList.append([])
-ds = [7,7,3,3]
+ds = [1,6,6,8]
 for d in ds:
    # d = random.randint(1,13)
     curList[0].append((str(d),d))
@@ -48,39 +44,26 @@ for d in ds:
 print (len(curList), curList[0])
 
 
-# In[28]:
-
-
 for _ in range(3):
     newList=[]
+    print("Length of the list is", len(curList))
     for clist in curList:
-        perm = permutations(clist)
+        
+        perm = permutations(clist,2)
         for p in list(perm):
             for op in opList:
-                t =oprNum(p[0],p[1],op)
-                tl=[]
-                tl.append(t)
-                newList.append([t, *p[2:]])
+                cclist=clist.copy()
+                t =oprNum(p[0],p[1],op) 
+                cclist.remove(p[0])
+                cclist.remove(p[1])
+                newList.append([t, *cclist])
     del curList
     curList = newList.copy()
 
 
 # In[29]:
 
-
+print(len(curList))
 for item in curList:
     if item[0][1] ==24:
         print (item)
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
