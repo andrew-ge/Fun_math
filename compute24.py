@@ -4,7 +4,7 @@
 # In[27]:
 
 
-
+import random
 from itertools import permutations 
 from math import sqrt
 
